@@ -1,0 +1,41 @@
+<launch>
+  <arg name="use_sim_time" default="true" />
+  <arg name="gui" default="false" />
+  <arg name="headless" default="false" />
+  <arg name="world_name" value="$(find pc2l)/worlds/empty.world" />
+
+
+
+  <!-- Launch Gazebo with the specified world -->
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="debug" value="0" />
+    <arg name="gui" value="$(arg gui)" />
+    <arg name="use_sim_time" value="$(arg use_sim_time)" />
+    <arg name="headless" value="$(arg headless)" />
+    <arg name="world_name" value="$(arg world_name)" />
+  </include>
+
+  <!-- Load Scout's description, controllers, and teleop nodes. -->
+  <include file="$(find scout_description)/launch/description.launch">
+  </include>
+  <!--<include file="$(find winter_project)/launch/include/control.launch" />-->
+  <!--<include file="$(find scout_bringup)/launch/scout_teleop_keyboard.launch">
+  </include>-->
+
+    <arg name="initial_pose_x" default="0.0"/>
+    <arg name="initial_pose_y" default="0.0"/>
+    <arg name="initial_pose_a" default="0"/>
+    <arg name="robot_name" default="scout_v2"/>
+
+    <!--  ******************** Robot Model ********************  -->
+    <param name="robot_description" command="$(find xacro)/xacro --inorder '$(find scout_description)/urdf/$(arg robot_name).urdf'"/>
+
+  <!-- Spawn Scout Mini ;) -->
+  <!--<node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model"
+	      args="-urdf -model scout_v2 -param robot_description -x 0 -y 0 -z 1.0" />-->
+	      
+  <node pkg="gazebo_ros" type="spawn_model" name="spawn_$(arg robot_name)" 
+        args="-x $(arg initial_pose_x) -y $(arg initial_pose_y) -Y $(arg initial_pose_a)
+        -unpause -urdf -param robot_description -model $(arg robot_name)" respawn="false">
+    </node>
+</launch>
