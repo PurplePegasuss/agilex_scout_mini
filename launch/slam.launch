@@ -3,9 +3,9 @@
     <!-- Launch Point Cloud tools to filter the original Velodyne data and feed into gmapping -->
     
     <node pkg="tf" type="static_transform_publisher" name="base_to_velodyne" args="0 0 0.03 0 0 0 base_link velodyne 10" />
-    <include file="$(find pc2l)/launch/include/pc2l.launch" />
-    <include file="$(find pc2l)/launch/include/gmapping.launch" />
+    <include file="$(find agilex_scout_mini)/launch/include/pc2l.launch" />
+    <include file="$(find agilex_scout_mini)/launch/include/gmapping.launch" />
     
-    <include file="$(find pc2l)/launch/include/move_base.launch" />	
+    <include file="$(find agilex_scout_mini)/launch/include/move_base.launch" />	
 
 </launch>

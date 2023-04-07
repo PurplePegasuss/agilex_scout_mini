@@ -1,4 +1,4 @@
-image: /home/pegasus/catkin_ws/src/pc2l/maps/tutorial.pgm
+image: /home/pegasus/catkin_ws/src/agilex_scout_mini/maps/tutorial.pgm
 resolution: 0.020000
 origin: [0.000000, 0.000000, 0.000000]
 negate: 0

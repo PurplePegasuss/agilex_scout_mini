@@ -2,7 +2,7 @@
   <arg name="use_sim_time" default="true" />
   <arg name="gui" default="false" />
   <arg name="headless" default="false" />
-  <arg name="world_name" value="$(find pc2l)/worlds/empty.world" />
+  <arg name="world_name" value="$(find agilex_scout_mini)/worlds/empty.world" />
 
 
 

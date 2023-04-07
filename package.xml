@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <package format="2">
-  <name>pc2l</name>
+  <name>agilex_scout_mini</name>
   <version>0.0.0</version>
-  <description>The pc2l package</description>
+  <description>The agile x scout package</description>
 
   <!-- One maintainer tag required, multiple allowed, one person per tag -->
   <!-- Example:  -->
@@ -31,6 +31,8 @@
   <!-- The *depend tags are used to specify dependencies -->
   <!-- Dependencies can be catkin packages or system dependencies -->
   <depend>move_base</depend>
+  <depend>gmapping</depend>
+
   <!-- Examples: -->
   <!-- Use depend as a shortcut for packages that are both build and exec dependencies -->
   <!--   <depend>roscpp</depend> -->

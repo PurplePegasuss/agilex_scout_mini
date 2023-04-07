@@ -1,4 +1,4 @@
-controller_frequency: 5.0
+controller_frequency: 10.0
 recovery_behaviour_enabled: true
 
 NavfnROS:
@@ -10,19 +10,19 @@ TrajectoryPlannerROS:
   acc_lim_x: 2.5
   acc_lim_theta:  3.2
 
-  max_vel_x: 0.6
+  max_vel_x: 1
   min_vel_x: 0.0
 
   max_vel_theta: 1.0
   min_vel_theta: -1.0
-  min_in_place_vel_theta: 0.5
+  min_in_place_vel_theta: 1.0
 
   holonomic_robot: false
   escape_vel: -0.1
 
   # Goal Tolerance Parameters
   yaw_goal_tolerance: 0.5
-  xy_goal_tolerance: 0.1
+  xy_goal_tolerance: 0.2
   latch_xy_goal_tolerance: false
 
   # Forward Simulation Parameters
@@ -31,7 +31,7 @@ TrajectoryPlannerROS:
   angular_sim_granularity: 0.02
   vx_samples: 6
   vtheta_samples: 20
-  controller_frequency: 20.0
+  controller_frequency: 10.0
 
   # Trajectory scoring parameters
   meter_scoring: true # Whether the gdist_scale and pdist_scale parameters should assume that goal_distance and path_distance are expressed in units of meters or cells. Cells are assumed by default (false).
@@ -57,11 +57,11 @@ DWAPlannerROS:
   acc_lim_y: 0
   acc_lim_th: 3.2
 
-  max_vel_x: 0.5
+  max_vel_x: 1
   min_vel_x: 0
 
-  max_vel_trans: 0.5
-  min_vel_trans: 0.0
+  max_vel_trans: 1
+  min_vel_trans: 0
   max_vel_theta: 1.0
   min_vel_theta: -1.0
 

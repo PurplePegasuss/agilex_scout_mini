@@ -6,7 +6,7 @@ ROS-based SLAM and trajectory planning for AgileX Scout Mini Robot
 1. Run the following command in your catkin_ws folder:
 
    ```shell
-   roslaunch pc2l scout_world.launch
+   roslaunch agilex_scout_mini scout_world.launch
    ```
 2. Run the following command in the new tab:
 
