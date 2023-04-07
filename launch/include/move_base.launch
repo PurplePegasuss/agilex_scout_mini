@@ -3,14 +3,14 @@
   <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
     <rosparam file="$(find agilex_scout_mini)/params/costmap_common_params.yaml" command="load" ns="global_costmap" />
     <rosparam file="$(find agilex_scout_mini)/params/costmap_common_params.yaml" command="load" ns="local_costmap" />
+    
     <rosparam file="$(find agilex_scout_mini)/params/local_costmap_params.yaml" command="load" />
     <rosparam file="$(find agilex_scout_mini)/params/global_costmap_params.yaml" command="load" />
-    <rosparam file="$(find agilex_scout_mini)/params/planner.yaml" command="load" />
     
-    <!--rosparam file="$(find agilex_scout_mini)/params/base_local_planner_params.yaml" command="load" /-->
-    <!--rosparam file="$(find agilex_scout_mini)/params/dwa_local_planner_params.yaml" command="load" /-->
+    <rosparam file="$(find agilex_scout_mini)/params/base_local_planner_params.yaml" command="load" />
     
     <rosparam file="$(find agilex_scout_mini)/params/move_base_params.yaml" command="load" />
+
   </node>
   
 </launch>

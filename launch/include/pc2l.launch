@@ -10,10 +10,10 @@
             angle_min: -3.1416
             angle_max: 3.1416
             angle_increment: 0.0087
-            scan_time: 0.1
+            scan_time: 0.05
             range_min: 0.1
             use_inf: false
-            concurrency_level: 0
+            concurrency_level: 1
         </rosparam>
     </node>
 </launch>
