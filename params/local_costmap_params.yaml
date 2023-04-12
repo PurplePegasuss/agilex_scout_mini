@@ -9,3 +9,4 @@ local_costmap:
    static_map: false
    rolling_window: true
 
+

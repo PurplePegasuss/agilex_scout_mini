@@ -18,9 +18,10 @@ find_package(catkin REQUIRED COMPONENTS
   std_msgs
 )
 
-
 ## System dependencies are found with CMake's conventions
-# find_package(Boost REQUIRED COMPONENTS system)
+find_package(Boost REQUIRED COMPONENTS system)
+find_package(PCL REQUIRED)
+
 
 
 ## Uncomment this if the package has a setup.py. This macro ensures
@@ -123,8 +124,18 @@ catkin_package(
 ## Your package locations should be listed before other locations
 include_directories(
 # include
-# ${catkin_INCLUDE_DIRS}
+ ${catkin_INCLUDE_DIRS}
 )
+
+include_directories(include${PCL_INCLUDE_DIRS})
+link_directories(${PCL_LIBRARY_DIRS})
+
+
+add_executable(pointcloud_filter src/pointcloud_filter.cpp)
+target_link_libraries(pointcloud_filter ${catkin_LIBRARIES} ${PCL_LIBRARIES})
+
+add_executable(floor_removal src/floor_removal.cpp)
+target_link_libraries(floor_removal ${catkin_LIBRARIES} ${PCL_LIBRARIES})
 
 ## Declare a C++ library
 # add_library(${PROJECT_NAME}
