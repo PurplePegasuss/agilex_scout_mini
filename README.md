@@ -1,6 +1,8 @@
 # agilex_scout_mini
 ROS-based SLAM and trajectory planning for AgileX Scout Mini Robot
 
+![Alt Text](https://i.ibb.co/tmrRK3K/ros.gif) ![Alt Text](https://iili.io/HvutlHP.md.gif)
+
 ### How to Run Simulation
 
 1. Run the following command in your catkin_ws folder:
