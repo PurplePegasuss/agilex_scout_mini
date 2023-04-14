@@ -1,6 +1,14 @@
 <launch>
   <arg name="scan_topic" default="front_scan" />
 
+ <!-- Added the robot pose ekf pkg for testing fusion -->
+ <!--   <node pkg="robot_pose_ekf" name="robot_pose_ekf" type="robot_pose_ekf">
+        <param name="odom_frame" value="odom" />
+        <param name="base_frame" value="base_link"/>
+        <remap from="imu_data" to="imu" />
+    </node>
+    -->
+
   <node pkg="gmapping" type="slam_gmapping" name="slam_gmapping" output="screen">
 
     <param name="odom_frame" value="odom"/>

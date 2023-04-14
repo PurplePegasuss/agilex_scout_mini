@@ -74,13 +74,13 @@ pcl::PointCloud<PointT>::Ptr pointcloud_filter(pcl::PointCloud<PointT>::Ptr &clo
     pcl::PassThrough<PointT> pass_z;
     pass_z.setInputCloud(cloud_pcl);
     pass_z.setFilterFieldName("z");
-    pass_z.setFilterLimits(-0.30, 0.10);
+    pass_z.setFilterLimits(-0.30, 0.30);
     pass_z.filter(*cloud_filtered);
     // Cropbox using PassThrough filter in x direction
     pcl::PassThrough<PointT> pass_x;
     pass_x.setInputCloud(cloud_filtered);
     pass_x.setFilterFieldName("x");
-    pass_x.setFilterLimits(-0.45, 0.00);
+    pass_x.setFilterLimits(-0.45, 0.10);
     pass_x.setFilterLimitsNegative(true);
     pass_x.filter(*cloud_filtered);
 
