@@ -1,8 +1,11 @@
 # agilex_scout_mini
 ROS-based SLAM and trajectory planning for AgileX Scout Mini Robot
 
-![Alt Text](https://i.ibb.co/yfj2PVP/ros.gif)
-
+### SLAM in Robotics Lab
+<p align = "center">
+  <img src = "images/fov.gif" height = "240px" style="margin:10px 10px">
+  <img src = "images/ros.gif" height = "240px" style="margin:10px 10px">
+</p>
 
 ### How to Run Simulation
 
