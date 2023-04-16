@@ -1,0 +1,3 @@
+<launch>
+    <node name="pose_array_to_people" pkg="agilex_scout_mini" type="pose_array_to_people" output="screen"/>
+</launch> 

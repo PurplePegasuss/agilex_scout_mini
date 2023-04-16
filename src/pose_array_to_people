@@ -1,0 +1,82 @@
+#!/usr/bin/env python3
+
+# import time
+import numpy as np
+import rospy
+
+from geometry_msgs.msg import Point, Pose, PoseArray
+from people_msgs.msg import People, Person
+
+
+from dr_spaam.detector import Detector
+ 
+
+class Pose2People():
+    def __init__(self):
+        self.pose_sub = rospy.Subscriber(
+            '/dr_spaam_detections', PoseArray, self.pose_callback, queue_size=2
+        )
+
+        self.people_pub = rospy.Publisher(
+            '/people', People, queue_size=2, latch=True
+        )
+
+
+    def pose_callback(self, msg):
+        people = self.pose_array_to_people(msg)
+        self.people_pub.publish(people)
+
+
+    def quaternion_to_orientation(self, Q):
+        """
+        Creates a unit vector, which represents an orientation given by quaternion.
+    
+        Input
+        :param Q: A 4 element array representing the quaternion (q0,q1,q2,q3) 
+    
+        Output
+        :return: A 3x1 unit vector, representing an orientation
+        """
+
+        # Extract the values from Q
+        q0 = Q.x
+        q1 = Q.y
+        q2 = Q.z
+        q3 = Q.w
+        
+        # First row of the rotation matrix
+        r0 = 2 * (q0 * q0 + q1 * q1) - 1
+        r1 = 2 * (q1 * q2 - q0 * q3)
+        r2 = 2 * (q1 * q3 + q0 * q2)
+                                
+        return np.array([r0, r1, r2])
+
+
+    def pose_array_to_people (self, pose_arr: PoseArray) -> People:
+        """
+        Transforms recieved PoseArray to People
+        """
+        people = People()
+
+        people.header.stamp = rospy.Time.now()
+        people.header.frame_id = "velodyne" 
+
+        for i, pose in enumerate(pose_arr.poses):
+            cur_person = Person()
+
+            cur_person.position = pose.position
+            euler_rotation = self.quaternion_to_orientation(pose.orientation)
+            
+            cur_person.velocity = Point(*euler_rotation) 
+            cur_person.name = f"Person {i}"
+
+            people.people.append(cur_person)
+
+        return people
+
+if __name__ == '__main__':
+    rospy.init_node('pose2people')
+    
+    
+    p2p = Pose2People()
+    rospy.spin()

@@ -137,6 +137,10 @@ target_link_libraries(pointcloud_filter ${catkin_LIBRARIES} ${PCL_LIBRARIES})
 add_executable(floor_removal src/floor_removal.cpp)
 target_link_libraries(floor_removal ${catkin_LIBRARIES} ${PCL_LIBRARIES})
 
+catkin_install_python(PROGRAMS src/pose_array_to_people
+                      DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
+
+
 ## Declare a C++ library
 # add_library(${PROJECT_NAME}
 #   src/${PROJECT_NAME}/pc2l.cpp
@@ -221,3 +225,5 @@ target_link_libraries(floor_removal ${catkin_LIBRARIES} ${PCL_LIBRARIES})
 
 ## Add folders to be run by python nosetests
 # catkin_add_nosetests(test)
+
+
