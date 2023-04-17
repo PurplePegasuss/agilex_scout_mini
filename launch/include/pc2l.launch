@@ -1,10 +1,8 @@
 <launch>
 
+
     <!-- SACSegmemtation to remove ground plane -->
     <node name="floor_removal" pkg="agilex_scout_mini" type="floor_removal" output="screen"/>
-
-    <!-- Transforms data from dr_spaam to People -->
-    <node name="pose_array_to_people" pkg="agilex_scout_mini" type="pose_array_to_people" output="screen"/>
 
     <!-- Launch the nodelet manager for pcl -->
     <node pkg="nodelet" type="nodelet" name="pcl_manager" args="manager" output="screen" />
@@ -51,8 +49,9 @@
         </rosparam>
     </node>
     
+    
     <node pkg="pointcloud_to_laserscan" type="pointcloud_to_laserscan_node" name="pointcloud_to_laserscan">
-        <remap from="cloud_in" to="/velodyne_points/filtered"/>    
+        <remap from="cloud_in" to="/velodyne_points/filtered"/>
         <remap from="scan" to="front_scan"/>
         <rosparam>
             transform_tolerance: 0.01
@@ -68,4 +67,4 @@
             concurrency_level: 1
         </rosparam>
     </node>
-</launch> 
+</launch>
