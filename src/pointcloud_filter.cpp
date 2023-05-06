@@ -71,17 +71,18 @@ pcl::PointCloud<PointT>::Ptr pointcloud_filter(pcl::PointCloud<PointT>::Ptr &clo
     pcl::PointCloud<PointT>::Ptr cloud_filtered (new pcl::PointCloud<PointT>);
 
     // Cropbox using PassThrough filter in z direction
-    pcl::PassThrough<PointT> pass_z;
-    pass_z.setInputCloud(cloud_pcl);
-    pass_z.setFilterFieldName("z");
-    pass_z.setFilterLimits(-0.30, 0.30);
-    pass_z.filter(*cloud_filtered);
+    pcl::PassThrough<PointT> pass_y;
+    pass_y.setInputCloud(cloud_pcl);
+    pass_y.setFilterFieldName("y");
+    pass_y.setFilterLimits(-20.0, 20.0);
+    pass_y.setFilterLimitsNegative(false);
+    pass_y.filter(*cloud_filtered);
     // Cropbox using PassThrough filter in x direction
     pcl::PassThrough<PointT> pass_x;
     pass_x.setInputCloud(cloud_filtered);
     pass_x.setFilterFieldName("x");
-    pass_x.setFilterLimits(-0.45, 0.10);
-    pass_x.setFilterLimitsNegative(true);
+    pass_x.setFilterLimits(-20.00, 20.00);
+    pass_x.setFilterLimitsNegative(false);
     pass_x.filter(*cloud_filtered);
 
     // Reduce noise using radius outlier filter
@@ -101,7 +102,9 @@ pcl::PointCloud<PointT>::Ptr pointcloud_filter(pcl::PointCloud<PointT>::Ptr &clo
     // Downsampling the pointcloud using a VoxelGrid filter
     pcl::VoxelGrid<PointT> vg;
     vg.setInputCloud (cloud_filtered);
-    vg.setLeafSize (0.02f, 0.02f, 0.02f);
+    vg.setFilterFieldName("z");
+    vg.setFilterLimits(-0.25, 0.3);
+    vg.setLeafSize (0.05f, 0.05f, 0.05f);
     vg.filter (*cloud_filtered);
 
     return cloud_filtered;

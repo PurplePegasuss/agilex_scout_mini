@@ -6,8 +6,8 @@
     
     <!-- Added this to test fusion -->
     <node pkg="tf" type="static_transform_publisher" name="base_to_imu" args="0.0 0.0 0.0 0.0 0.0 0.0 /base_link imu_link 10" />
-    <include file="$(find dr_spaam_ros)/launch/dr_spaam_ros.launch" />
-    <include file="$(find agilex_scout_mini)/launch/include/pc2l.launch" />
+    <!-- include file="$(find dr_spaam_ros)/launch/dr_spaam_ros.launch" /-->
+    <include file="$(find agilex_scout_mini)/launch/include/new_pc2l.launch" />
     <include file="$(find agilex_scout_mini)/launch/include/gmapping.launch" />
     
     <include file="$(find agilex_scout_mini)/launch/include/move_base.launch" />	

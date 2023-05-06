@@ -4,7 +4,7 @@
     <node name="floor_removal" pkg="agilex_scout_mini" type="floor_removal" output="screen"/>
 
     <!-- Transforms data from dr_spaam to People -->
-    <node name="pose_array_to_people" pkg="agilex_scout_mini" type="pose_array_to_people" output="screen"/>
+    <!--node name="pose_array_to_people" pkg="agilex_scout_mini" type="pose_array_to_people" output="screen"/-->
 
     <!-- Launch the nodelet manager for pcl -->
     <node pkg="nodelet" type="nodelet" name="pcl_manager" args="manager" output="screen" />
@@ -15,14 +15,14 @@
         <remap from="~output" to="/velodyne_points/passthrough" />
         <rosparam>
             filter_field_name: x
-            filter_limit_min: -0.55
-            filter_limit_max: 0.00
-            filter_limit_negative: True
+            filter_limit_min: -20.00
+            filter_limit_max: 20.0
+            filter_limit_negative: False
 
             filter_field_name: y
-            filter_limit_min: -0.30
-            filter_limit_max: 0.30
-            filter_limit_negative: True
+            filter_limit_min: -20.0
+            filter_limit_max: 20.0
+            filter_limit_negative: False
         </rosparam>
     </node>
 
@@ -33,7 +33,7 @@
         <rosparam>
             <!-- Neighbor area to check points -->
             <!-- Keep points with neighbor points larger than this number -->
-            radius_search: 0.10
+            radius_search: 0.20
             min_neighbors: 1
         </rosparam>
     </node>
@@ -44,8 +44,8 @@
         <remap from="~output" to="/velodyne_points/filtered" />
         <rosparam>
             filter_field_name: z
-            filter_limit_min: -0.28
-            filter_limit_max: 0.10
+            filter_limit_min: -0.25
+            filter_limit_max: 0.3
             filter_limit_negative: False
             leaf_size: 0.05
         </rosparam>

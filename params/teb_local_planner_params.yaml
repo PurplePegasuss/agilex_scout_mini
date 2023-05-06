@@ -4,7 +4,6 @@ TebLocalPlannerROS:
  map_frame: /map
     
  # Trajectory
-  
  teb_autosize: True
  dt_ref: 0.3
  dt_hysteresis: 0.1
@@ -13,7 +12,6 @@ TebLocalPlannerROS:
  feasibility_check_no_poses: 5
     
  # Robot
-         
  max_vel_x: 0.3
  max_vel_x_backwards: 0.3
  max_vel_theta: 0.2
@@ -22,24 +20,22 @@ TebLocalPlannerROS:
  min_turning_radius: 0.0
  
  footprint_model: # types: "point", "circular", "two_circles", "line", "polygon"
-   type: "line"
+   type: "polygon"
    # radius: 0.2 # for type "circular"
-   line_start: [-0.3, 0.0] # for type "line"
-   line_end: [0.3, 0.0] # for type "line"
+   #line_start: [-0.3, 0.0] # for type "line"
+   #line_end: [0.3, 0.0] # for type "line"
    # front_offset: 0.2 # for type "two_circles"
    # front_radius: 0.2 # for type "two_circles"
    # rear_offset: 0.2 # for type "two_circles"
    # rear_radius: 0.2 # for type "two_circles"
-   # vertices: [[-0.3, -0.3], [-0.3, 0.3], [0.3, 0.3], [0.3, -0.3]] # for type "polygon"
+   vertices: [[-0.3, -0.3], [-0.3, 0.3], [0.3, 0.3], [0.3, -0.3]] # for type "polygon"
 
  # GoalTolerance
-    
  xy_goal_tolerance: 0.2
  yaw_goal_tolerance: 0.1
  free_goal_vel: False
     
  # Obstacles
-    
  min_obstacle_dist: 0.4
  include_costmap_obstacles: True
  costmap_obstacles_behind_robot_dist: 1.0
@@ -49,7 +45,6 @@ TebLocalPlannerROS:
  costmap_converter_rate: 5
 
  # Optimization
-    
  no_inner_iterations: 5
  no_outer_iterations: 4
  optimization_activate: True

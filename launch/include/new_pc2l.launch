@@ -1,0 +1,33 @@
+<launch>
+
+    <!-- SACSegmemtation to remove ground plane -->
+    <node name="floor_removal" pkg="agilex_scout_mini" type="floor_removal" output="screen"/>
+
+    <!-- Transforms data from dr_spaam to People -->
+    <!--node name="pose_array_to_people" pkg="agilex_scout_mini" type="pose_array_to_people" output="screen"/-->
+
+    <!-- Launch the nodelet manager for pcl -->
+    <node pkg="nodelet" type="nodelet" name="pcl_manager" args="manager" output="screen" />
+
+    <!-- Launch nodelete for filtering the data -->
+    <!--node name="pointcloud_filter" pkg="agilex_scout_mini" type="pointcloud_filter" output="screen" /-->
+
+    <!-- Launch projector of 3D PointCloud onto 2D LaserScan -->
+    <node pkg="pointcloud_to_laserscan" type="pointcloud_to_laserscan_node" name="pointcloud_to_laserscan">
+        <remap from="cloud_in" to="/velodyne_points"/>    
+        <remap from="scan" to="front_scan"/>
+        <rosparam>
+            transform_tolerance: 0.01
+            min_height: 0.0
+            max_height: 1.0
+
+            angle_min: -3.1416
+            angle_max: 3.1416
+            angle_increment: 0.0087
+            scan_time: 0.05
+            range_min: 0.1
+            use_inf: false
+            concurrency_level: 1
+        </rosparam>
+    </node>
+</launch> 

@@ -5,14 +5,13 @@ raytrace_range: 3.0
 max_obstacle_height: 2.0
 origin_z: 0.0
 
-
 z_resolution: 0.2
 z_voxels: 10
 unknown_threshold: 9
 mark_threshold: 0
 
 publish_voxel_map: true
-transform_tolerance: 0.25
+transform_tolerance: 0.3
 meter_scoring: true
 
 footprint: [[-0.3, -0.3], [-0.3, 0.3], [0.3, 0.3], [0.3, -0.3]]
