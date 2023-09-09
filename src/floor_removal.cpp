@@ -12,6 +12,7 @@
 
 #include <pcl/segmentation/sac_segmentation.h>
 #include <pcl/filters/extract_indices.h>
+#include <pcl/filters/voxel_grid.h>
 
 
 // Define point cloud datatypes for PCL and ROS
@@ -91,6 +92,14 @@ pcl::PointCloud<PointT>::Ptr floor_remove(pcl::PointCloud<PointT>::Ptr &cloud_pc
     extract.setIndices(floor_indices);
     extract.setNegative(true);
     extract.filter(*cloud_filtered);
+
+    // Downsampling the pointcloud using a VoxelGrid filter
+    pcl::VoxelGrid<PointT> vg;
+    vg.setInputCloud (cloud_filtered);
+    vg.setFilterFieldName("z");
+    vg.setFilterLimits(0.01, 0.6);
+    vg.setLeafSize (0.05f, 0.05f, 0.05f);
+    vg.filter (*cloud_filtered);
 
     return cloud_filtered;
 }
