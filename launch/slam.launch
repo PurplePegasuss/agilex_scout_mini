@@ -1,4 +1,5 @@
 <launch>
+    <arg name="planner" default="dwa"/>
 
     <!-- Launch Point Cloud tools to filter the original Velodyne data and feed into gmapping -->
     
@@ -10,6 +11,8 @@
     <include file="$(find agilex_scout_mini)/launch/include/new_pc2l.launch" />
     <include file="$(find agilex_scout_mini)/launch/include/gmapping.launch" />
     
-    <include file="$(find agilex_scout_mini)/launch/include/move_base.launch" />	
+    <include file="$(find agilex_scout_mini)/launch/include/move_base.launch">
+        <arg name="planner" value="$(arg planner)"/>
+    </include>	
 
 </launch>
