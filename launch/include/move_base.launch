@@ -11,7 +11,7 @@
     <rosparam file="$(find agilex_scout_mini)/params/$(arg planner)_local_planner_params.yaml" command="load" />
     
     <rosparam file="$(find agilex_scout_mini)/params/move_base_params.yaml" command="load" />
-    <rosparam file="$(find scout_control)/params/move_base_params.yaml" command="load" />
+    <rosparam file="$(find agilex_scout_mini)/params/move_base_params.yaml" command="load" />
     <!-- <param name="base_local_planner" value="teb_local_planner/TebLocalPlannerROS"/> -->
   </node>
   
